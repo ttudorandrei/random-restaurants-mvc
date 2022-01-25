@@ -2,17 +2,19 @@ const router = require("express").Router();
 
 router.get("/", (req, res) => {
   try {
-    res.render("homepage");
+    res.status(200).render("homepage");
   } catch (error) {
-    res.json({ error: "Oops! Can't load the home page" });
+    console.error(error.message);
+    res.status(500);
   }
 });
 
 router.get("/restaurants", (req, res) => {
   try {
-    res.json({ data: "You have hit the restaurants page" });
+    res.status(200).render("restaurants");
   } catch (error) {
-    res.json({ error: "Oops! Can't load the restaurants page" });
+    console.error(error.message);
+    res.status(500);
   }
 });
 
