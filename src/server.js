@@ -3,6 +3,8 @@ const cors = require("cors");
 const path = require("path");
 const handlebars = require("express-handlebars");
 
+const routes = require("./routes");
+
 const PORT = 3000;
 
 const app = express();
@@ -20,13 +22,7 @@ app.use(cors());
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../", "public")));
-app.get("/", (req, res) => {
-  try {
-    res.json({ data: "Here is some test data" });
-  } catch (error) {
-    res.json({ error: "OOps! There was an error!" });
-  }
-});
+app.use(routes);
 
 const init = async () => {
   try {
