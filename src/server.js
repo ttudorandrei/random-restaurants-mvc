@@ -4,6 +4,7 @@ const path = require("path");
 const handlebars = require("express-handlebars");
 
 const routes = require("./routes");
+const logger = require("./middleware/logger");
 
 const PORT = 3000;
 
@@ -22,6 +23,7 @@ app.use(cors());
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../", "public")));
+app.use(logger);
 app.use(routes);
 
 const init = async () => {
