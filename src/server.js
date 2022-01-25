@@ -5,12 +5,13 @@ const handlebars = require("express-handlebars");
 
 const routes = require("./routes");
 const logger = require("./middleware/logger");
+const helpers = require("./utils/helpers");
 
 const PORT = 3000;
 
 const app = express();
 
-const handlebarsOptions = {};
+const handlebarsOptions = { helpers };
 
 const hbs = handlebars.create(handlebarsOptions);
 
